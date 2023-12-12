@@ -15,5 +15,19 @@
 
 
 
-<image src="misc/overview.png"/>
+<image src="misc/teaser.png"/>
 </p>
+
+
+
+
+
+## Citation
+If you find our code and paper useful, please cite
+```bibtex
+@article{zhu2023living,
+author = {Liyuan Zhu and Shengyu Huang and Konrad Schindler, Iro Armeni},
+title = {Living Scenes: Multi-object Relocalization and Reconstruction in Changing 3D Environments},
+year = {2023}
+}
+```
