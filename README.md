@@ -14,8 +14,7 @@
   | <a href="https://zhuliyuan.net/livingscenes">Website</a> | <a href="https://www.arxiv.org">Data (coming)</a> </h3> 
   <div align="center"></div>
 
-This repository represents the official implementation of the paper titled "Living Scenes: Multi-object Relocalization
-and Reconstruction in Changing 3D Environments".
+This repository represents the official implementation of this paper.
 
 ## Abstract
 <image src="misc/teaser.png"/>
