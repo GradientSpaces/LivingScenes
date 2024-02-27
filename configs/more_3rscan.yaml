@@ -1,0 +1,26 @@
+# iter: [0] # select specific
+shape_priors:
+  prior_name: chair
+  ckpt_dir: /home/liyuanzhu/projects/MA/MORE/lib_shape_prior/log/server/3rscan_bs64
+  n_input_point: 1024
+
+
+fps:
+    random_start: false
+    n_init: 1
+
+registration:
+  optim: true
+  step_size: 
+    so3: 0.05
+  n_steps: 400
+  early_stop_threshold: 10 # in degrees
+
+mesh_extractor:
+  threshold: 0.5
+  resolution0: 32
+  upsampling_steps: 2
+  sample: False
+  simplify_nfaces: 5000
+  points_batch_size: 10000
+  refinement_step: 0

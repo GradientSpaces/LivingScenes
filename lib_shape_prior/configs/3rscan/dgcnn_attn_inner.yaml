@@ -1,0 +1,138 @@
+method: sim3vec-3rscan
+runner: solver_v2
+gpu: 0
+modes: ["train", "val"]
+
+model:
+  model_name: sim3sdf_vanilla
+
+  sdf2occ_factor: -1.0
+
+  encoder_64: false
+
+  w_nss: 0.5
+  w_uni: 0.5
+  loss_th: 0.1
+  loss_near_lambda: 1.0
+  loss_far_lambda: 0.5
+
+  w_s: 0.001
+  w_t: 0.2
+  w_recon: 1.0
+
+  decoder_type: inner_deepsdf
+  encoder_type: vecdgcnn_atten
+
+  center_aug_std: 0.05
+  rot_aug: false
+  
+  encoder:
+    c_dim: 256
+    num_layers: 7
+    feat_dim: [32, 32, 64, 64, 128, 256, 512]
+    down_sample_layers: [2, 4, 5]
+    down_sample_factor: [2, 4, 4]
+    atten_start_layer: 2
+    atten_multi_head_c: 16
+    use_res_global_conv: True
+    res_global_start_layer: 2
+    num_knn: 16
+    scale_factor: 64000.0
+    leak_neg_slope: 0.2
+    use_dg: True
+    center_pred: True
+    center_pred_scale: True
+
+  decoder:
+    latent_size: 256
+    dims: [ 768, 768, 768, 768, 768, 768, 768, 768]
+    dropout: [0, 1, 2, 3, 4, 5, 6, 7]
+    dropout_prob: 0.2
+    norm_layers: [0, 1, 2, 3, 4, 5, 6, 7]
+    latent_in: [4]
+    weight_norm: True
+    use_tanh: False
+    latent_dropout: False
+    pe_dim: 257
+
+dataset:
+  num_workers: 16
+  dataset_name: shapenet_new2
+  ram_cache: false # False
+  categories: ["02747177", "02818832", "02828884", "03001627", "04256520", "04379243", "03938244"]
+  dataset_proportion: [1.0, 1.0] # [0.1, 0.1]
+  data_root: ../data/shapenet_3rscan/
+
+  
+  shapenet_split_fn:  ./splits/all.csv
+
+  field_mode: sdf
+  input_mode: dep
+  # depth_postfix: "_dep_small"
+
+  dep_total_view: 12
+  dep_max_use_view: 8
+  dep_min_use_view: 2
+
+  n_pcl: 1024 # 300 in O-Flow
+  n_query_uni: 1024
+  n_query_nss: 1024
+  n_query_eval: 10000
+  noise_std: 0.005
+
+  use_augmentation: True
+  aug_ratio: 0.6
+
+  random_object_prob: 0.7
+  random_object_radius: 0.15
+  random_object_radius_std: 0.07
+  random_object_center_near_surface: True
+  random_object_center_L: 0.15
+  random_object_scale: [0.5, 1.5]
+
+  random_plane_prob: 0.5
+  random_plane_vertical_prob: 0.5
+  random_plane_vertical_scale: [0.05, 0.5]
+  random_plane_vertical_height_range: [0.4, 1.0]
+  random_plane_vertical_horizon_range: [0.4, 0.5]
+  random_plane_ground_scale: [0.4, 1.0]
+  random_plane_ground_range: 0.2
+
+  random_ball_removal_prob: 0.6
+  random_ball_removal_max_k: 50
+  random_ball_removal_noise_std: 0.05
+
+
+training:
+  grad_clip: 4.0
+  loss_clip: 4.0
+  optim:
+    all:
+      lr: 0.0001
+      decay_schedule: [120000, 150000, 180000]
+      decay_factor: [0.3, 0.3, 0.3]
+      lr_min: 0.00000001
+
+  total_iter: 200000
+  batch_size: 64
+
+evaluation:
+  eval_every_iter: 1000
+  iou_threshold: 0.5
+  batch_size: 4
+
+logging:
+  log_dir: 3rscan_bs64
+  loggers: ["mesh", "image", "hist", "video", "xls"]
+  viz_nontrain_interval: 3
+  viz_iter_interval: 1000
+  checkpoint_iter: 1000
+
+  model_select_metric: iou
+  model_select_larger: true
+
+generation:
+  occ_if_meshing_cfg:
+    threshold: 0.5
+    batch_pts: 8000
+    simplify_nfaces: 5000

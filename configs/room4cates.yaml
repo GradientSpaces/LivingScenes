@@ -1,0 +1,39 @@
+# iter: [0] # select specific
+shape_priors:
+  "chair":
+    field_pt: ./lib_shape_prior/log/shape_prior_room4cates/checkpoint/selected.pt
+    field_cfg: ./lib_shape_prior/configs/room4cates.yaml
+    database_cache_fn: cache/chairs.npz
+    database_n_pcl_store: 30000
+    database_k:
+      inv: 23
+      so3: 1
+      joint: 1
+
+  
+solver_global:
+  use_double: False
+  use_sdf: True
+  use_normal: True
+  phase1_max_steps: 15
+  phase2_max_steps: 5
+  num_episode: 1
+
+  est_chunk: 30
+  query_chunk: 30000
+
+  # joint prob setting
+  joint_background_omega: 0.0001
+  joint_duplication_removal_cfg:
+    iou_th: 0.7
+    inclusion_th: 0.8
+    sdf_th: 0.04 # the dist in canonical space
+
+  mesh_extractor:
+    threshold: 0.5
+    resolution0: 32
+    upsampling_steps: 3
+    sample: False
+    simplify_nfaces: 100000
+    points_batch_size: 10000
+    refinement_step: 0

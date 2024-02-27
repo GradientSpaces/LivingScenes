@@ -1,0 +1,14 @@
+pykdtree
+trimesh
+point_cloud_utils
+torchlie
+rich
+matplotlib
+python-pycg
+geomloss
+roma
+coloredlogs
+tensorboardX
+opencv-python
+h5py
+transforms3d
