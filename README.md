@@ -102,9 +102,10 @@ Our implementation on the shape prior training part heavily relies on [EFEM](htt
 ## Citation
 If you find our code and paper useful, please cite
 ```bibtex
-@article{zhu2023living,
+@inproceedings{zhu2023living,
 author = {Liyuan Zhu and Shengyu Huang and Konrad Schindler, Iro Armeni},
 title = {Living Scenes: Multi-object Relocalization and Reconstruction in Changing 3D Environments},
-year = {2023}
+booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+year = {2024}
 }
 ```
