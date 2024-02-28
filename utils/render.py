@@ -126,21 +126,6 @@ if __name__ == "__main__":
     im = Image.fromarray(rgb)
     im.save(f'/scratch/liyzhu/MA_Thesis/EFEM/utils/images/render.png')
 
-# for i, pose in enumerate(camera_pose):
-#     scene.clear()
-#     scene.add(mesh)
-#     scene.add(camera, pose=pose)
-#     scene.add(sl, pose=pose)
-#     r = pyrender.OffscreenRenderer(image_height, image_width)
-#     rgb, _ = r.render(scene) 
-#     r.delete()
-#     from PIL import Image
-#     im = Image.fromarray(rgb)
-#     im.save(f'/scratch/liyzhu/MA_Thesis/EFEM/utils/images/{i}.png')
-#     pass
-
-# np.save('/scratch/liyzhu/MA_Thesis/EFEM/utils/camera_poses', camera_pose)
-# pyrender.Viewer(scene, use_raymond_lighting=True)
 
 
 
