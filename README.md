@@ -68,9 +68,27 @@ pip install -r requirements.txt
 ```
 If your hardware is the same as the tested ones, just run `install.sh`.
 
-## Dataset Download
+## Dataset Preparation
 
-Coming soon. (The size is too big, thus requires some time to process).
+### Training Data
+We generate the training data following [EFEM](https://github.com/JiahuiLei/EFEM). It will take three steps:
+
+1. Make the ShapeNet mesh watertight
+2. Generate SDF samples from the watertight mesh
+3. Render depth maps and back-project them to point clouds
+
+We provide the script to process the mesh: https://github.com/Zhu-Liyuan/mesh_processing.
+
+### FlyingShape
+The FlyingShape dataset is generated from [ShapeNet](https://shapenet.org/). [[download link](https://drive.google.com/file/d/1FPkXtNynYqhIDWOdYNEyEKTfYJMsknNa/view?usp=drive_link)].
+
+### 3RScan
+Please download the dataset from the original repository https://github.com/WaldJohannaU/3RScan. The authors provide tools to process the raw data.
+
+We use the raw RGB-D measurements and back-project the depth images to get the point cloud of the scene. We also filter out the background.
+
+### Change the path in config
+When you finish downloading the dataset, change the `root_path` in `configs/3rscan.yaml` based on where you put the data on your machine.
 
 ## Train Shape Prior
 To train the VN encoder-decoder network on ShapeNet data, run
@@ -91,13 +109,12 @@ To evaluate performance on FlyingShape, run:
 ```
 python eval_flyingshape.py
 ```
-Don't forget to change the path in the config file if you put your code in a different directory.
 
 ## Contact
 If you have any question, please contact Liyuan Zhu (liyuan.zhu@stanford.edu).
 
 ## Ackownledgement
-Our implementation on the shape prior training part heavily relies on [EFEM](https://github.com/JiahuiLei/EFEM) and [Vector Neurons](https://github.com/FlyingGiraffe/vnn/) and we thank the authors for open sourcing their code and their insightful discussion at the early stage of this project.
+Our implementation on the shape prior training part heavily relies on [EFEM](https://github.com/JiahuiLei/EFEM) and [Vector Neurons](https://github.com/FlyingGiraffe/vnn/) and we thank the authors for open sourcing their code and their insightful discussion at the early stage of this project. So please cite them as well.
 
 ## Citation
 If you find our code and paper useful, please cite
