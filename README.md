@@ -10,8 +10,8 @@
 
 <p align="center"><strong>CVPR 2024</strong></a>
 <p align="center"><strong><sup>1</sup>Stanford University, <sup>2</sup>ETH Zurich</strong></a>
-  <h3 align="center"><a href="https://arxiv.org">Arxiv</a> 
-  | <a href="https://zhuliyuan.net/livingscenes">Website</a> | <a href="https://www.arxiv.org">Data (coming)</a> </h3> 
+  <h3 align="center"><a href="https://arxiv.org/abs/2312.09138">Arxiv</a> 
+  | <a href="https://zhuliyuan.net/livingscenes">Website</a> | <a href="https://github.com/GradientSpaces/LivingScenes?tab=readme-ov-file#training-data">Data</a> </h3> 
   <div align="center"></div>
 
 This repository represents the official implementation of this paper.
@@ -110,11 +110,14 @@ To evaluate performance on FlyingShape, run:
 python eval_flyingshape.py
 ```
 
+## Using Predicted Segmentation (Mask3d)
+Thanks to the authors of [Mask3D](https://jonasschult.github.io/Mask3D/), you can use their updated code to get predicted segmentation of your point cloud and run LivingScenes on it. [https://github.com/cvg/Mask3D]
+
 ## Contact
 If you have any question, please contact Liyuan Zhu (liyuan.zhu@stanford.edu).
 
 ## Ackownledgement
-Our implementation on the shape prior training part heavily relies on [EFEM](https://github.com/JiahuiLei/EFEM) and [Vector Neurons](https://github.com/FlyingGiraffe/vnn/) and we thank the authors for open sourcing their code and their insightful discussion at the early stage of this project. So please cite them as well.
+Our implementation on the shape prior training part heavily relies on [EFEM](https://github.com/JiahuiLei/EFEM) and [Vector Neurons](https://github.com/FlyingGiraffe/vnn/) and we thank the authors for open sourcing their code and their insightful discussion at the early stage of this project. We also thank Francis Engelmann and for providing the updated Mask3D. So please cite them as well.
 
 ## Citation
 If you find our code and paper useful, please cite
