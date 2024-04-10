@@ -117,7 +117,7 @@ Thanks to the authors of [Mask3D](https://jonasschult.github.io/Mask3D/), you ca
 If you have any question, please contact Liyuan Zhu (liyuan.zhu@stanford.edu).
 
 ## Ackownledgement
-Our implementation on the shape prior training part heavily relies on [EFEM](https://github.com/JiahuiLei/EFEM) and [Vector Neurons](https://github.com/FlyingGiraffe/vnn/) and we thank the authors for open sourcing their code and their insightful discussion at the early stage of this project. We also thank Francis Engelmann and for providing the updated Mask3D. So please cite them as well.
+Our implementation on the shape prior training part heavily relies on [EFEM](https://github.com/JiahuiLei/EFEM) and [Vector Neurons](https://github.com/FlyingGiraffe/vnn/) and we thank the authors for open sourcing their code and their insightful discussion at the early stage of this project. We also thank Francis Engelmann for providing the updated Mask3D. So please cite them as well.
 
 ## Citation
 If you find our code and paper useful, please cite
