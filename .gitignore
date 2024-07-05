@@ -147,7 +147,6 @@ lib_shape_prior/wandb
 # cluster output
 *.out
 
-*.txt
 *.npy
 
 # cluster log

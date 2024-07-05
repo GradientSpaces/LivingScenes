@@ -1,6 +1,6 @@
 root_path: '/home/liyuanzhu/projects/MA/MORE/data/3RScan/data'
 split: val
-category_list: /home/liyuanzhu/projects/MA/MORE/data/3RScan/cate_to_use.txt
+category_list: cate_to_use.txt
 # ["chair", "armchair", "table",  "sofa", "couch",  "bed", "side table", "ottoman", "desk", "pillow", "cushion"] # "pillow", "cushion",
 n_point_per_instance: 1024
 use_gt_mask: False
